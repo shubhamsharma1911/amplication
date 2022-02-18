@@ -9,7 +9,7 @@ const palette = createPalette(
       main: "#20a4f3",
     },
     secondary: {
-      main: "#197d1b",
+      main: "#7950ed",
     },
     error: {
       main: "#e93c51",

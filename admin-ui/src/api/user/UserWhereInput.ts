@@ -1,20 +1,9 @@
-import { CustomerWhereUniqueInput } from "../customer/CustomerWhereUniqueInput";
-import { DeviceWhereUniqueInput } from "../device/DeviceWhereUniqueInput";
-import { StringFilter } from "../../util/StringFilter";
-import { FacilityWhereUniqueInput } from "../facility/FacilityWhereUniqueInput";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { StringFilter } from "../../util/StringFilter";
 
 export type UserWhereInput = {
-  customerId?: CustomerWhereUniqueInput;
-  devices?: DeviceWhereUniqueInput;
-  email?: StringFilter;
-  facilityId?: FacilityWhereUniqueInput;
-  firstName?: StringFilter;
+  firstName?: StringNullableFilter;
   id?: StringFilter;
-  lastName?: StringFilter;
-  phoneNumber?: StringFilter;
-  rollNumber?: StringNullableFilter;
-  status?: "Pending" | "Approved" | "Active" | "Blocked" | "Removed";
-  type?: "Student" | "Teacher" | "Manager" | "Parent" | "Volunteer";
+  lastName?: StringNullableFilter;
   username?: StringFilter;
 };

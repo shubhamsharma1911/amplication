@@ -1,16 +1,8 @@
 import { Module } from "@nestjs/common";
 import { UserModule } from "./user/user.module";
-import { CustomerModule } from "./customer/customer.module";
-import { FacilityModule } from "./facility/facility.module";
-import { DeviceModule } from "./device/device.module";
-import { ProviderModule } from "./provider/provider.module";
-import { ContentModule } from "./content/content.module";
-import { FileModule } from "./file/file.module";
-import { RuleModule } from "./rule/rule.module";
-import { TagModule } from "./tag/tag.module";
-import { HealthModule } from "./health/health.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
+import { HealthModule } from "./health/health.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
 import { MorganModule } from "nest-morgan";
 import { ConfigModule, ConfigService } from "@nestjs/config";
@@ -22,17 +14,9 @@ import { GraphQLModule } from "@nestjs/graphql";
   controllers: [],
   imports: [
     UserModule,
-    CustomerModule,
-    FacilityModule,
-    DeviceModule,
-    ProviderModule,
-    ContentModule,
-    FileModule,
-    RuleModule,
-    TagModule,
-    HealthModule,
     ACLModule,
     AuthModule,
+    HealthModule,
     SecretsManagerModule,
     MorganModule,
     ConfigModule.forRoot({ isGlobal: true }),

@@ -4,8 +4,8 @@ import CardContent from "@material-ui/core/CardContent";
 import { Title } from "react-admin";
 const Dashboard = () => (
   <Card>
-    <Title title="Welcome to the Keytab administration" />
-    <CardContent>Welcome </CardContent>
+    <Title title="Welcome to the administration" />
+    <CardContent>Welcome</CardContent>
   </Card>
 );
 
