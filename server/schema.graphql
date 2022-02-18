@@ -1,0 +1,873 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+type Content {
+  contentType: EnumContentContentType
+  createdAt: DateTime!
+  description: String
+  fileId(orderBy: FileOrderByInput, skip: Float, take: Float, where: FileWhereInput): [File!]!
+  hasPrerequiste: String
+  id: String!
+  parent: String
+  provider: Provider
+  related: String
+  status: EnumContentStatus
+  title: String!
+  updatedAt: DateTime!
+}
+
+input ContentCreateInput {
+  contentType: EnumContentContentType!
+  description: String
+  hasPrerequiste: String
+  parent: String
+  provider: ProviderWhereUniqueInput!
+  related: String
+  status: EnumContentStatus!
+  title: String!
+}
+
+input ContentOrderByInput {
+  contentType: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  hasPrerequiste: SortOrder
+  id: SortOrder
+  parent: SortOrder
+  providerId: SortOrder
+  related: SortOrder
+  status: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input ContentUpdateInput {
+  contentType: EnumContentContentType
+  description: String
+  hasPrerequiste: String
+  parent: String
+  provider: ProviderWhereUniqueInput
+  related: String
+  status: EnumContentStatus
+  title: String
+}
+
+input ContentWhereInput {
+  contentType: EnumContentContentType
+  description: StringNullableFilter
+  hasPrerequiste: StringNullableFilter
+  id: StringFilter
+  parent: StringNullableFilter
+  provider: ProviderWhereUniqueInput
+  related: StringNullableFilter
+  status: EnumContentStatus
+  title: StringFilter
+}
+
+input ContentWhereUniqueInput {
+  id: String!
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+type Customer {
+  addressLine_1: String!
+  addressLine_2: String
+  addressLine_3: String
+  city: String!
+  country: String!
+  createdAt: DateTime!
+  email: String!
+  facilityId(orderBy: FacilityOrderByInput, skip: Float, take: Float, where: FacilityWhereInput): [Facility!]!
+  firstName: String!
+  id: String!
+  lastName: String!
+  pincode: String!
+  state: String!
+  status: EnumCustomerStatus
+  telephone: Float!
+  updatedAt: DateTime!
+  userId(orderBy: UserOrderByInput, skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+input CustomerCreateInput {
+  addressLine_1: String!
+  addressLine_2: String
+  addressLine_3: String
+  city: String!
+  country: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  pincode: String!
+  state: String!
+  status: EnumCustomerStatus!
+  telephone: Float!
+}
+
+input CustomerOrderByInput {
+  addressLine_1: SortOrder
+  addressLine_2: SortOrder
+  addressLine_3: SortOrder
+  city: SortOrder
+  country: SortOrder
+  createdAt: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  pincode: SortOrder
+  state: SortOrder
+  status: SortOrder
+  telephone: SortOrder
+  updatedAt: SortOrder
+}
+
+input CustomerUpdateInput {
+  addressLine_1: String
+  addressLine_2: String
+  addressLine_3: String
+  city: String
+  country: String
+  email: String
+  firstName: String
+  lastName: String
+  pincode: String
+  state: String
+  status: EnumCustomerStatus
+  telephone: Float
+}
+
+input CustomerWhereInput {
+  addressLine_1: StringFilter
+  addressLine_2: StringNullableFilter
+  addressLine_3: StringNullableFilter
+  city: StringFilter
+  country: StringFilter
+  email: StringFilter
+  firstName: StringFilter
+  id: StringFilter
+  lastName: StringFilter
+  pincode: StringFilter
+  state: StringFilter
+  status: EnumCustomerStatus
+  telephone: IntFilter
+}
+
+input CustomerWhereUniqueInput {
+  id: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Device {
+  createdAt: DateTime!
+  deviceId: String!
+  deviceType: EnumDeviceDeviceType
+  facility: Facility
+  id: String!
+  manufacturer: String!
+  model: String!
+  size: String!
+  status: EnumDeviceStatus
+  updatedAt: DateTime!
+  user: User
+}
+
+input DeviceCreateInput {
+  deviceId: String!
+  deviceType: EnumDeviceDeviceType!
+  facility: FacilityWhereUniqueInput!
+  manufacturer: String!
+  model: String!
+  size: String!
+  status: EnumDeviceStatus!
+  user: UserWhereUniqueInput!
+}
+
+input DeviceOrderByInput {
+  createdAt: SortOrder
+  deviceId: SortOrder
+  deviceType: SortOrder
+  facilityId: SortOrder
+  id: SortOrder
+  manufacturer: SortOrder
+  model: SortOrder
+  size: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input DeviceUpdateInput {
+  deviceId: String
+  deviceType: EnumDeviceDeviceType
+  facility: FacilityWhereUniqueInput
+  manufacturer: String
+  model: String
+  size: String
+  status: EnumDeviceStatus
+  user: UserWhereUniqueInput
+}
+
+input DeviceWhereInput {
+  deviceId: StringFilter
+  deviceType: EnumDeviceDeviceType
+  facility: FacilityWhereUniqueInput
+  id: StringFilter
+  manufacturer: StringFilter
+  model: StringFilter
+  size: StringFilter
+  status: EnumDeviceStatus
+  user: UserWhereUniqueInput
+}
+
+input DeviceWhereUniqueInput {
+  id: String!
+}
+
+enum EnumContentContentType {
+  Audio
+  Ebook
+  Game
+  Video
+}
+
+enum EnumContentStatus {
+  Active
+  Approved
+  Blocked
+  Pending
+  Removed
+}
+
+enum EnumCustomerStatus {
+  Active
+  Approved
+  Blocked
+  Pending
+  Removed
+}
+
+enum EnumDeviceDeviceType {
+  KeyStone
+  KeyTab
+}
+
+enum EnumDeviceStatus {
+  Active
+  Approved
+  Blocked
+  Pending
+  Removed
+}
+
+enum EnumFacilityFacilityType {
+  College
+  School
+  University
+}
+
+enum EnumFacilityStatus {
+  Active
+  Approved
+  Blocked
+  Pending
+  Removed
+}
+
+enum EnumProviderStatus {
+  Active
+  Approved
+  Blocked
+  Pending
+  Removed
+}
+
+enum EnumRuleRuleType {
+  ContentType
+  Language
+  Provider
+}
+
+enum EnumUserStatus {
+  Active
+  Approved
+  Blocked
+  Pending
+  Removed
+}
+
+enum EnumUserType {
+  Manager
+  Parent
+  Student
+  Teacher
+  Volunteer
+}
+
+type Facility {
+  addressLine_1: String!
+  addressLine_2: String
+  addressLine_3: String
+  city: String!
+  country: String!
+  createdAt: DateTime!
+  customerId: Customer
+  devices: Device
+  email: String!
+  facilityType: EnumFacilityFacilityType
+  id: String!
+  name: String!
+  primaryContact: String!
+  ruleId(orderBy: RuleOrderByInput, skip: Float, take: Float, where: RuleWhereInput): [Rule!]!
+  secondaryContact: String
+  state: String!
+  status: EnumFacilityStatus
+  updatedAt: DateTime!
+  userId(orderBy: UserOrderByInput, skip: Float, take: Float, where: UserWhereInput): [User!]!
+  zipCode: String!
+}
+
+input FacilityCreateInput {
+  addressLine_1: String!
+  addressLine_2: String
+  addressLine_3: String
+  city: String!
+  country: String!
+  customerId: CustomerWhereUniqueInput!
+  devices: DeviceWhereUniqueInput
+  email: String!
+  facilityType: EnumFacilityFacilityType!
+  name: String!
+  primaryContact: String!
+  secondaryContact: String
+  state: String!
+  status: EnumFacilityStatus!
+  zipCode: String!
+}
+
+input FacilityOrderByInput {
+  addressLine_1: SortOrder
+  addressLine_2: SortOrder
+  addressLine_3: SortOrder
+  city: SortOrder
+  country: SortOrder
+  createdAt: SortOrder
+  customerIdId: SortOrder
+  devicesId: SortOrder
+  email: SortOrder
+  facilityType: SortOrder
+  id: SortOrder
+  name: SortOrder
+  primaryContact: SortOrder
+  secondaryContact: SortOrder
+  state: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+  zipCode: SortOrder
+}
+
+input FacilityUpdateInput {
+  addressLine_1: String
+  addressLine_2: String
+  addressLine_3: String
+  city: String
+  country: String
+  customerId: CustomerWhereUniqueInput
+  devices: DeviceWhereUniqueInput
+  email: String
+  facilityType: EnumFacilityFacilityType
+  name: String
+  primaryContact: String
+  secondaryContact: String
+  state: String
+  status: EnumFacilityStatus
+  zipCode: String
+}
+
+input FacilityWhereInput {
+  addressLine_1: StringFilter
+  addressLine_2: StringNullableFilter
+  addressLine_3: StringNullableFilter
+  city: StringFilter
+  country: StringFilter
+  customerId: CustomerWhereUniqueInput
+  devices: DeviceWhereUniqueInput
+  email: StringFilter
+  facilityType: EnumFacilityFacilityType
+  id: StringFilter
+  name: StringFilter
+  primaryContact: StringFilter
+  secondaryContact: StringNullableFilter
+  state: StringFilter
+  status: EnumFacilityStatus
+  zipCode: StringFilter
+}
+
+input FacilityWhereUniqueInput {
+  id: String!
+}
+
+type File {
+  available: Boolean!
+  checksum: String!
+  contentId: Content
+  createdAt: DateTime!
+  fileExt: String!
+  fileSize: String!
+  id: String!
+  language: String!
+  name: String
+  thumbnail: String
+  updatedAt: DateTime!
+}
+
+input FileCreateInput {
+  available: Boolean!
+  checksum: String!
+  contentId: ContentWhereUniqueInput!
+  fileExt: String!
+  fileSize: String!
+  language: String!
+  name: String
+  thumbnail: String
+}
+
+input FileOrderByInput {
+  available: SortOrder
+  checksum: SortOrder
+  contentIdId: SortOrder
+  createdAt: SortOrder
+  fileExt: SortOrder
+  fileSize: SortOrder
+  id: SortOrder
+  language: SortOrder
+  name: SortOrder
+  thumbnail: SortOrder
+  updatedAt: SortOrder
+}
+
+input FileUpdateInput {
+  available: Boolean
+  checksum: String
+  contentId: ContentWhereUniqueInput
+  fileExt: String
+  fileSize: String
+  language: String
+  name: String
+  thumbnail: String
+}
+
+input FileWhereInput {
+  available: BooleanFilter
+  checksum: StringFilter
+  contentId: ContentWhereUniqueInput
+  fileExt: StringFilter
+  fileSize: StringFilter
+  id: StringFilter
+  language: StringFilter
+  name: StringNullableFilter
+  thumbnail: StringNullableFilter
+}
+
+input FileWhereUniqueInput {
+  id: String!
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+input JsonFilter {
+  equals: JSONObject
+  not: JSONObject
+}
+
+type MetaQueryPayload {
+  count: String!
+}
+
+type Mutation {
+  createContent(data: ContentCreateInput!): Content!
+  createCustomer(data: CustomerCreateInput!): Customer!
+  createDevice(data: DeviceCreateInput!): Device!
+  createFacility(data: FacilityCreateInput!): Facility!
+  createFile(data: FileCreateInput!): File!
+  createProvider(data: ProviderCreateInput!): Provider!
+  createRule(data: RuleCreateInput!): Rule!
+  createTag(data: TagCreateInput!): Tag!
+  createUser(data: UserCreateInput!): User!
+  deleteContent(where: ContentWhereUniqueInput!): Content!
+  deleteCustomer(where: CustomerWhereUniqueInput!): Customer!
+  deleteDevice(where: DeviceWhereUniqueInput!): Device!
+  deleteFacility(where: FacilityWhereUniqueInput!): Facility!
+  deleteFile(where: FileWhereUniqueInput!): File!
+  deleteProvider(where: ProviderWhereUniqueInput!): Provider!
+  deleteRule(where: RuleWhereUniqueInput!): Rule!
+  deleteTag(where: TagWhereUniqueInput!): Tag!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateContent(data: ContentUpdateInput!, where: ContentWhereUniqueInput!): Content!
+  updateCustomer(data: CustomerUpdateInput!, where: CustomerWhereUniqueInput!): Customer!
+  updateDevice(data: DeviceUpdateInput!, where: DeviceWhereUniqueInput!): Device!
+  updateFacility(data: FacilityUpdateInput!, where: FacilityWhereUniqueInput!): Facility!
+  updateFile(data: FileUpdateInput!, where: FileWhereUniqueInput!): File!
+  updateProvider(data: ProviderUpdateInput!, where: ProviderWhereUniqueInput!): Provider!
+  updateRule(data: RuleUpdateInput!, where: RuleWhereUniqueInput!): Rule!
+  updateTag(data: TagUpdateInput!, where: TagWhereUniqueInput!): Tag!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Provider {
+  Telephone: String!
+  addressLine_1: String!
+  addressLine_2: String
+  addressLine_3: String
+  city: String!
+  contents(orderBy: ContentOrderByInput, skip: Float, take: Float, where: ContentWhereInput): [Content!]!
+  country: String!
+  createdAt: DateTime!
+  description: String
+  email: String!
+  id: String!
+  name: String!
+  pincode: String!
+  state: String!
+  status: EnumProviderStatus
+  updatedAt: DateTime!
+}
+
+input ProviderCreateInput {
+  Telephone: String!
+  addressLine_1: String!
+  addressLine_2: String
+  addressLine_3: String
+  city: String!
+  country: String!
+  description: String
+  email: String!
+  name: String!
+  pincode: String!
+  state: String!
+  status: EnumProviderStatus!
+}
+
+input ProviderOrderByInput {
+  Telephone: SortOrder
+  addressLine_1: SortOrder
+  addressLine_2: SortOrder
+  addressLine_3: SortOrder
+  city: SortOrder
+  country: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  email: SortOrder
+  id: SortOrder
+  name: SortOrder
+  pincode: SortOrder
+  state: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+}
+
+input ProviderUpdateInput {
+  Telephone: String
+  addressLine_1: String
+  addressLine_2: String
+  addressLine_3: String
+  city: String
+  country: String
+  description: String
+  email: String
+  name: String
+  pincode: String
+  state: String
+  status: EnumProviderStatus
+}
+
+input ProviderWhereInput {
+  Telephone: StringFilter
+  addressLine_1: StringFilter
+  addressLine_2: StringNullableFilter
+  addressLine_3: StringNullableFilter
+  city: StringFilter
+  country: StringFilter
+  description: StringNullableFilter
+  email: StringFilter
+  id: StringFilter
+  name: StringFilter
+  pincode: StringFilter
+  state: StringFilter
+  status: EnumProviderStatus
+}
+
+input ProviderWhereUniqueInput {
+  id: String!
+}
+
+type Query {
+  _contentsMeta(orderBy: ContentOrderByInput, skip: Float, take: Float, where: ContentWhereInput): MetaQueryPayload!
+  _customersMeta(orderBy: CustomerOrderByInput, skip: Float, take: Float, where: CustomerWhereInput): MetaQueryPayload!
+  _devicesMeta(orderBy: DeviceOrderByInput, skip: Float, take: Float, where: DeviceWhereInput): MetaQueryPayload!
+  _facilitiesMeta(orderBy: FacilityOrderByInput, skip: Float, take: Float, where: FacilityWhereInput): MetaQueryPayload!
+  _filesMeta(orderBy: FileOrderByInput, skip: Float, take: Float, where: FileWhereInput): MetaQueryPayload!
+  _providersMeta(orderBy: ProviderOrderByInput, skip: Float, take: Float, where: ProviderWhereInput): MetaQueryPayload!
+  _rulesMeta(orderBy: RuleOrderByInput, skip: Float, take: Float, where: RuleWhereInput): MetaQueryPayload!
+  _tagsMeta(orderBy: TagOrderByInput, skip: Float, take: Float, where: TagWhereInput): MetaQueryPayload!
+  _usersMeta(orderBy: UserOrderByInput, skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  content(where: ContentWhereUniqueInput!): Content
+  contents(orderBy: ContentOrderByInput, skip: Float, take: Float, where: ContentWhereInput): [Content!]!
+  customer(where: CustomerWhereUniqueInput!): Customer
+  customers(orderBy: CustomerOrderByInput, skip: Float, take: Float, where: CustomerWhereInput): [Customer!]!
+  device(where: DeviceWhereUniqueInput!): Device
+  devices(orderBy: DeviceOrderByInput, skip: Float, take: Float, where: DeviceWhereInput): [Device!]!
+  facilities(orderBy: FacilityOrderByInput, skip: Float, take: Float, where: FacilityWhereInput): [Facility!]!
+  facility(where: FacilityWhereUniqueInput!): Facility
+  file(where: FileWhereUniqueInput!): File
+  files(orderBy: FileOrderByInput, skip: Float, take: Float, where: FileWhereInput): [File!]!
+  provider(where: ProviderWhereUniqueInput!): Provider
+  providers(orderBy: ProviderOrderByInput, skip: Float, take: Float, where: ProviderWhereInput): [Provider!]!
+  rule(where: RuleWhereUniqueInput!): Rule
+  rules(orderBy: RuleOrderByInput, skip: Float, take: Float, where: RuleWhereInput): [Rule!]!
+  tag(where: TagWhereUniqueInput!): Tag
+  tags(orderBy: TagOrderByInput, skip: Float, take: Float, where: TagWhereInput): [Tag!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: UserOrderByInput, skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+type Rule {
+  createdAt: DateTime!
+  facilityId: Facility
+  filter: String
+  id: String!
+  rule: JSONObject!
+  ruleType: EnumRuleRuleType
+  updatedAt: DateTime!
+}
+
+input RuleCreateInput {
+  facilityId: FacilityWhereUniqueInput!
+  filter: String
+  rule: JSONObject!
+  ruleType: EnumRuleRuleType!
+}
+
+input RuleOrderByInput {
+  createdAt: SortOrder
+  facilityIdId: SortOrder
+  filter: SortOrder
+  id: SortOrder
+  rule: SortOrder
+  ruleType: SortOrder
+  updatedAt: SortOrder
+}
+
+input RuleUpdateInput {
+  facilityId: FacilityWhereUniqueInput
+  filter: String
+  rule: JSONObject
+  ruleType: EnumRuleRuleType
+}
+
+input RuleWhereInput {
+  facilityId: FacilityWhereUniqueInput
+  filter: StringNullableFilter
+  id: StringFilter
+  rule: JsonFilter
+  ruleType: EnumRuleRuleType
+}
+
+input RuleWhereUniqueInput {
+  id: String!
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type Tag {
+  createdAt: DateTime!
+  id: String!
+  name: String!
+  updatedAt: DateTime!
+}
+
+input TagCreateInput {
+  name: String!
+}
+
+input TagOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input TagUpdateInput {
+  name: String
+}
+
+input TagWhereInput {
+  id: StringFilter
+  name: StringFilter
+}
+
+input TagWhereUniqueInput {
+  id: String!
+}
+
+type User {
+  createdAt: DateTime!
+  customerId: Customer
+  devices: Device
+  email: String!
+  facilityId: Facility
+  firstName: String!
+  id: String!
+  lastName: String!
+  phoneNumber: String!
+  roles: [String!]!
+  rollNumber: String
+  status: EnumUserStatus
+  type: EnumUserType
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  customerId: CustomerWhereUniqueInput
+  devices: DeviceWhereUniqueInput
+  email: String!
+  facilityId: FacilityWhereUniqueInput
+  firstName: String!
+  lastName: String!
+  password: String!
+  phoneNumber: String!
+  roles: [String!]!
+  rollNumber: String
+  status: EnumUserStatus!
+  type: EnumUserType!
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String!
+  roles: [String!]!
+  username: String!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  customerIdId: SortOrder
+  devicesId: SortOrder
+  email: SortOrder
+  facilityIdId: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  phoneNumber: SortOrder
+  roles: SortOrder
+  rollNumber: SortOrder
+  status: SortOrder
+  type: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  customerId: CustomerWhereUniqueInput
+  devices: DeviceWhereUniqueInput
+  email: String
+  facilityId: FacilityWhereUniqueInput
+  firstName: String
+  lastName: String
+  password: String
+  phoneNumber: String
+  roles: [String!]
+  rollNumber: String
+  status: EnumUserStatus
+  type: EnumUserType
+  username: String
+}
+
+input UserWhereInput {
+  customerId: CustomerWhereUniqueInput
+  devices: DeviceWhereUniqueInput
+  email: StringFilter
+  facilityId: FacilityWhereUniqueInput
+  firstName: StringFilter
+  id: StringFilter
+  lastName: StringFilter
+  phoneNumber: StringFilter
+  rollNumber: StringNullableFilter
+  status: EnumUserStatus
+  type: EnumUserType
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}

@@ -1,0 +1,237 @@
+datasource postgres {
+  provider = "postgresql"
+  url      = env("POSTGRESQL_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  createdAt    DateTime       @default(now())
+  customerId   Customer?      @relation(fields: [customerIdId], references: [id])
+  customerIdId String?
+  devices      Device?        @relation(fields: [devicesId], references: [id])
+  devicesId    String?
+  email        String
+  facilityId   Facility?      @relation(fields: [facilityIdId], references: [id])
+  facilityIdId String?
+  firstName    String
+  id           String         @id @default(cuid())
+  lastName     String
+  password     String
+  phoneNumber  String
+  roles        String[]
+  rollNumber   String?
+  status       EnumUserStatus
+  type         EnumUserType
+  updatedAt    DateTime       @updatedAt
+  username     String         @unique
+}
+
+model Customer {
+  addressLine_1 String
+  addressLine_2 String?
+  addressLine_3 String?
+  city          String
+  country       String
+  createdAt     DateTime           @default(now())
+  email         String
+  facilityId    Facility[]
+  firstName     String
+  id            String             @id @default(cuid())
+  lastName      String
+  pincode       String
+  state         String
+  status        EnumCustomerStatus
+  telephone     Int
+  updatedAt     DateTime           @updatedAt
+  userId        User[]
+}
+
+model Facility {
+  addressLine_1    String
+  addressLine_2    String?
+  addressLine_3    String?
+  city             String
+  country          String
+  createdAt        DateTime                 @default(now())
+  customerId       Customer                 @relation(fields: [customerIdId], references: [id])
+  customerIdId     String
+  devices          Device?                  @relation(fields: [devicesId], references: [id])
+  devicesId        String?
+  email            String                   @unique
+  facilityType     EnumFacilityFacilityType
+  id               String                   @id @default(cuid())
+  name             String
+  primaryContact   String
+  ruleId           Rule[]
+  secondaryContact String?
+  state            String
+  status           EnumFacilityStatus
+  updatedAt        DateTime                 @updatedAt
+  userId           User[]
+  zipCode          String
+}
+
+model Device {
+  createdAt    DateTime             @default(now())
+  deviceId     String
+  deviceType   EnumDeviceDeviceType
+  facility     Facility
+  id           String               @id @default(cuid())
+  manufacturer String
+  model        String
+  size         String
+  status       EnumDeviceStatus
+  updatedAt    DateTime             @updatedAt
+  user         User
+}
+
+model Provider {
+  addressLine_1 String
+  addressLine_2 String?
+  addressLine_3 String?
+  city          String
+  contents      Content[]
+  country       String
+  createdAt     DateTime           @default(now())
+  description   String?
+  email         String
+  id            String             @id @default(cuid())
+  name          String
+  pincode       String
+  state         String
+  status        EnumProviderStatus
+  Telephone     String
+  updatedAt     DateTime           @updatedAt
+}
+
+model Content {
+  contentType    EnumContentContentType
+  createdAt      DateTime               @default(now())
+  description    String?
+  fileId         File[]
+  hasPrerequiste String?
+  id             String                 @id @default(cuid())
+  parent         String?
+  provider       Provider               @relation(fields: [providerId], references: [id])
+  providerId     String
+  related        String?
+  status         EnumContentStatus
+  title          String
+  updatedAt      DateTime               @updatedAt
+}
+
+model File {
+  available   Boolean
+  checksum    String
+  contentId   Content  @relation(fields: [contentIdId], references: [id])
+  contentIdId String
+  createdAt   DateTime @default(now())
+  fileExt     String
+  fileSize    String
+  id          String   @id @default(cuid())
+  language    String
+  name        String?
+  thumbnail   String?
+  updatedAt   DateTime @updatedAt
+}
+
+model Rule {
+  createdAt    DateTime         @default(now())
+  facilityId   Facility         @relation(fields: [facilityIdId], references: [id])
+  facilityIdId String
+  filter       String?
+  id           String           @id @default(cuid())
+  rule         Json
+  ruleType     EnumRuleRuleType
+  updatedAt    DateTime         @updatedAt
+}
+
+model Tag {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  name      String
+  updatedAt DateTime @updatedAt
+}
+
+enum EnumUserStatus {
+  Pending
+  Approved
+  Active
+  Blocked
+  Removed
+}
+
+enum EnumUserType {
+  Student
+  Teacher
+  Manager
+  Parent
+  Volunteer
+}
+
+enum EnumCustomerStatus {
+  Pending
+  Approved
+  Active
+  Blocked
+  Removed
+}
+
+enum EnumFacilityFacilityType {
+  School
+  University
+  College
+}
+
+enum EnumFacilityStatus {
+  Pending
+  Approved
+  Active
+  Blocked
+  Removed
+}
+
+enum EnumDeviceDeviceType {
+  KeyStone
+  KeyTab
+}
+
+enum EnumDeviceStatus {
+  Pending
+  Approved
+  Active
+  Blocked
+  Removed
+}
+
+enum EnumProviderStatus {
+  Pending
+  Approved
+  Active
+  Blocked
+  Removed
+}
+
+enum EnumContentContentType {
+  Video
+  Audio
+  Ebook
+  Game
+}
+
+enum EnumContentStatus {
+  Pending
+  Approved
+  Active
+  Blocked
+  Removed
+}
+
+enum EnumRuleRuleType {
+  Provider
+  ContentType
+  Language
+}
